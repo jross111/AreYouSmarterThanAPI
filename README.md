@@ -1,2 +1,3 @@
 # AreYouSmarterThanAPI
+
 JS Project
