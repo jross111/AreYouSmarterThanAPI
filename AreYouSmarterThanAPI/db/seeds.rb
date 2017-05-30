@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Leaderboard.create(name: 'Steven Jobs', score: "33")
+Leaderboard.create(name: 'Bob Ross', score: "21")
+Leaderboard.create(name: 'Bart Simpson', score: "3")
+Leaderboard.create(name: 'Ian Candy', score: "48")
+Leaderboard.create(name: 'Luke Skywalker', score: "21")
+Leaderboard.create(name: 'Jamie Ross', score: "213")
+
+p "Created #{Leaderboard.count} scores"
