@@ -6,11 +6,109 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Leaderboard.create(name: 'Steven Jobs', score: "33")
-Leaderboard.create(name: 'Bob Ross', score: "21")
-Leaderboard.create(name: 'Bart Simpson', score: "3")
-Leaderboard.create(name: 'Ian Candy', score: "48")
-Leaderboard.create(name: 'Luke Skywalker', score: "21")
-Leaderboard.create(name: 'Jamie Ross', score: "213")
+categories = Category.create([{
+  ruby: true,
+  iteration: false,
+  manipulation: false,
+  selection: false
+},{
+  ruby: false,
+  iteration: true,
+  manipulation: false,
+  selection: false
+},{
+  ruby: false,
+  iteration: false,
+  manipulation: true,
+  selection: false
+},{
+  ruby: false,
+  iteration: false,
+  manipulation: false,
+  selection: true,
+},{
+  ruby: false,
+  iteration: false,
+  manipulation: true,
+  selection: false
+},{
+  ruby: false,
+  iteration: false,
+  manipulation: false,
+  selection: false
+},{
+  ruby: false,
+  iteration: true,
+  manipulation: false,
+  selection: false
+},{
+  ruby: false,
+  iteration: false,
+  manipulation: false,
+  selection: true
+},{
+  ruby: false,
+  iteration: true,
+  manipulation: false,
+  selection: false
+},{
+  ruby: true,
+  iteration: false,
+  manipulation: false,
+  selection: false
+}])
+p "Seeded 10 Categories"
 
-p "Created #{Leaderboard.count} scores"
+quizzes = Quiz.create([{
+  username: "SJobs",
+  category_id: 3,
+  number_of_questions: 9,
+  score: 33
+},{
+  username: "BigBen",
+  category_id: 4,
+  number_of_questions: 7,
+  score: 32
+},{
+  username: "ICandy",
+  category_id: 1,
+  number_of_questions: 19,
+  score: 77
+},{
+  username: "MMerin",
+  category_id: 7,
+  number_of_questions: 13,
+  score: 74
+},{
+  username: "BHop",
+  category_id: 7,
+  number_of_questions: 13,
+  score: 66
+},{
+  username: "SClause",
+  category_id: 8,
+  number_of_questions: 15,
+  score: 55
+},{
+  username: "JamieRoss",
+  category_id: 5,
+  number_of_questions: 29,
+  score: 97
+},{
+  username: "StupidSue",
+  category_id: 1,
+  number_of_questions: 3,
+  score: 4
+},{
+  username: "BobRoss",
+  category_id: 8,
+  number_of_questions: 13,
+  score: 87
+},{
+  username: "BGates",
+  category_id: 2,
+  number_of_questions: 9,
+  score: 55
+}])
+
+p "Seeded 10 Quizzes"
