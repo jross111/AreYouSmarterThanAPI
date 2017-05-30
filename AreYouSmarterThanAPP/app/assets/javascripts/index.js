@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#sample-button').hover(function() {
-    $(this).css("background-color", "yellow")
+  $('#jumbotron').on('click', function() {
+    $.getScript('/app/assets/javascripts/otherIndex.js')
   })
 })
