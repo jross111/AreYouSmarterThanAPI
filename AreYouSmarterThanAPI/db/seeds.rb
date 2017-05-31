@@ -6,109 +6,54 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-categories = Category.create([{
-  ruby: true,
-  iteration: false,
-  manipulation: false,
-  selection: false
-},{
-  ruby: false,
-  iteration: true,
-  manipulation: false,
-  selection: false
-},{
-  ruby: false,
-  iteration: false,
-  manipulation: true,
-  selection: false
-},{
-  ruby: false,
-  iteration: false,
-  manipulation: false,
-  selection: true,
-},{
-  ruby: false,
-  iteration: false,
-  manipulation: true,
-  selection: false
-},{
-  ruby: false,
-  iteration: false,
-  manipulation: false,
-  selection: false
-},{
-  ruby: false,
-  iteration: true,
-  manipulation: false,
-  selection: false
-},{
-  ruby: false,
-  iteration: false,
-  manipulation: false,
-  selection: true
-},{
-  ruby: false,
-  iteration: true,
-  manipulation: false,
-  selection: false
-},{
-  ruby: true,
-  iteration: false,
-  manipulation: false,
-  selection: false
-}])
-p "Seeded 10 Categories"
 
-quizzes = Quiz.create([{
-  username: "SJobs",
-  category_id: 3,
-  number_of_questions: 9,
-  score: 33
-},{
-  username: "BigBen",
-  category_id: 4,
-  number_of_questions: 7,
-  score: 32
-},{
-  username: "ICandy",
-  category_id: 1,
-  number_of_questions: 19,
-  score: 77
-},{
-  username: "MMerin",
-  category_id: 7,
-  number_of_questions: 13,
-  score: 74
-},{
-  username: "BHop",
-  category_id: 7,
-  number_of_questions: 13,
-  score: 66
-},{
-  username: "SClause",
-  category_id: 8,
-  number_of_questions: 15,
-  score: 55
-},{
-  username: "JamieRoss",
-  category_id: 5,
-  number_of_questions: 29,
-  score: 97
-},{
-  username: "StupidSue",
-  category_id: 1,
-  number_of_questions: 3,
-  score: 4
-},{
-  username: "BobRoss",
-  category_id: 8,
-  number_of_questions: 13,
-  score: 87
-},{
-  username: "BGates",
-  category_id: 2,
-  number_of_questions: 9,
-  score: 55
-}])
+quizzes = Quiz.create([quiz_1: {
+      category: "selection",
+      type: "all",
+      language: "Ruby",
+      questions: {
+        question_1:
+        { question: "array.select { |x| x >= 1 }",
+          array: "[6, 5, 4, 3, 2, 1]",
+          answer: "[6, 5, 4, 3, 2, 1]",
+          wrong_answer: "[6, 5, 4, 3, 2]",
+          method: "select",
+          quiz_type: "Multiple Choice"
+          choices: "[[], [6, 5, 4, 3, 2], [6, 5, 4, 3, 2, 1], [1]]",
+          correct: "nil"
+        },
+        question_2:
+        { question: "array.detect { |x| x > 3 }",
+          array: "[3, 4, 5, 6, 7, 8]",
+          answer: "4",
+          wrong_answer: "3",
+          method: "detect",
+          quiz_type: "Enter"
+          choices: "[4, 3, 6, nil]",
+          correct: "nil"
+        },
+        question_3:
+        { question: "array.reject { |x| x <= 2 }",
+          array: "[2, 3, 4, 5, 6, 7]",
+          answer: "[3, 4, 5, 6, 7]",
+          wrong_answer: "[2]",
+          method: "reject",
+          quiz_type: "True Or False"
+          choices: "[[2, 3, 4, 5, 6, 7], [2], [], [3, 4, 5, 6, 7]]",
+          correct: "nil"
+        },
+        question_4:
+        { question: "array.delete_if { |x| x < 4 }",
+          array: "[7, 6, 5, 4, 3, 2]",
+          answer: "[7, 6, 5, 4]",
+          wrong_answer: "[4, 3, 2]",
+          method: "delete_if",
+          quiz_type: "Multiple Choice"
+          choices: "[[7, 6, 5, 4], [4, 3, 2], [3, 2], [7, 6, 5]]",
+          correct: "nil"
+        }
+      }
+    })
+    p 'hey this worked'
 
 p "Seeded 10 Quizzes"
