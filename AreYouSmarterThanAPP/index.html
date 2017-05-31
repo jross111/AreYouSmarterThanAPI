@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Basic Bootstrap Template</title>
-<!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> -->
-<link rel="stylesheet" type="text/css" href="../AreYouSmarterThanApp/app/assets/stylesheets/style.css">
-<!-- Optional Bootstrap theme -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Javascript Project</title>
+  <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="../AreYouSmarterThanApp/app/assets/stylesheets/style.css">
+  <!-- Optional Bootstrap theme -->
 </head>
+
 <body>
-    <h1>Are You Smarter Than A 101101 Grader?</h1>
+  <div class="container">
 
     <div class="jumbotron" id='jumbotron'>
-      <h1>Test Your Skills</h1>
-      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <p><a class="btn btn-danger btn-lg">Ruby</a>
-      <a class="btn btn-primary btn-lg">JavaScript</a>
-      <a class="btn btn-success btn-lg">Maybe Some Other Guy</a></p>
+      <p align="center"><h1 align="center">Are You Smart?</h1></p>
+      <div class="row">
+        <div class="col-lg-2">
+          <p align="center"><a class="btn btn-danger btn-lg">Ruby</a></div>
+        <div class="col-lg-2" align="center">
+          <a class="btn btn-primary btn-lg">JavaScript</a></div>
+
+        <div class="col-lg-2">
+          <a class="btn btn-success btn-lg">Leaderboard</a></p></div>
 
 
-    </div>
+        </div>
+      </div>
+
+      <!-- Quiz Starts -->
+
+      <div class="container" id="quiz">
+        <div class="row">
+          <div class="col-lg-2">
+            <h3>Question Number</h3>
+          </div>
+          <div class="col-lg-8">
+            <h4 align="center">Example Question Example Question Example Question</h4>
+          </div>
+          <div class="col-lg-2">
+            <div class="row">
+              <div class="col-lg-2">
+              <h3>Timer</h3>
+            </div>
+            </div>
+
+            </div>
+            <div class="col-lg-2">
+            <div class="row">
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" align="center">
+            <button type="button" class="btn btn-warning" align="center">A</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" align="center">
+            <button type="button" class="btn btn-warning" align="center">B</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" align="center">
+            <button type="button" class="btn btn-warning" align="center">C</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" align="center">
+            <button type="button" class="btn btn-warning" align="center">D</button>
+          </div>
+        </div>
+      </div>
+                  <!-- quiz end -->
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</div>
 </body>
+
 </html>
