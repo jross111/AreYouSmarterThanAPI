@@ -1,19 +1,14 @@
-class Api::V1::QuizController < ApplicationController
+class Api::V1::WelcomeController < ApplicationController
+
+  def welcome
+  end
 
   def getQuiz
     @quizzes = Quiz.all
   end
 
-  def getCategory
-    @categories = Catergory.all
-  end
-
   def createQuiz
-    @quiz = Leaderboard.create(quizParams)
-  end
-
-  def createCategory
-    @category = Leaderboard.create(categoryParams)
+    @quiz = Quiz.create(quizParams)
   end
 
   private
