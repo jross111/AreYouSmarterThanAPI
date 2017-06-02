@@ -1,12 +1,13 @@
 Quiz.create({
   username: "TestUser",
-  category: "selection",
+  category: "all",
   quiz_type: "all",
   language: "Ruby",
   score: 0
 })
 
-  Question.create({ quiz_id: 1,
+Question.create({
+  quiz_id: 1,
   question: "array.select { |x| x >= 1 }",
   array: "[6, 5, 4, 3, 2, 1]",
   answer: "[6, 5, 4, 3, 2, 1]",
@@ -24,8 +25,8 @@ Question.create({
   answer: "4",
   wrong_answer: "3",
   method: "detect",
-  quiz_type: "Enter",
-  choices: "[4, 3, 6, nil]",
+  quiz_type: "True Or False",
+  choices: "[4, 3, 6, null]",
   correct: true
 })
 
@@ -36,7 +37,7 @@ Question.create({
   answer: "[3, 4, 5, 6, 7]",
   wrong_answer: "[2]",
   method: "reject",
-  quiz_type: "True Or False",
+  quiz_type: "Multiple Choice",
   choices: "[[2, 3, 4, 5, 6, 7], [2], [], [3, 4, 5, 6, 7]]",
   correct: false
 })
@@ -50,5 +51,17 @@ Question.create({
   method: "delete_if",
   quiz_type: "Multiple Choice",
   choices: "[[7, 6, 5, 4], [4, 3, 2], [3, 2], [7, 6, 5]]",
+  correct: false
+})
+
+Question.create({
+  quiz_id: 1,
+  question: "array.pop #=> ?",
+  array: "[4, 5, 6, 7, 8, 9]",
+  answer: "9",
+  wrong_answer: "4",
+  method: "pop",
+  quiz_type: "True Or False",
+  choices: "[[5, 6, 7, 8, 9], 4, [4, 5, 6, 7, 8], 9]",
   correct: false
 })
