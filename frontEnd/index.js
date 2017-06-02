@@ -1,15 +1,17 @@
 // put in timer
 // start timer when thisIsOurListener
 // endOfQuiz currently triggers if there's not a question (under generateQuestion)
+// delete this trigger and if/else
 // trigger endOfQuiz when timer reaches 0
 
 var question = null, questions = null
 var currentQuestion = 0
 var questionsRight = 0, questionsWrong = 0
+var whatever = 0
 
 $(document).ready(function(){
   console.log('Document ready!')
-  $('#return_to_main').hide()
+  $('#return_to_main').hide(); $('#parent-progress-bar').hide()
   $('#timer').hide(); $('#question_number').hide(); $('#next').hide()
   $('#type_of_question').hide(); $('#array').hide(); $('#ask_question').hide(); $('#array_output').hide()
   $('#main_well').hide()
@@ -43,7 +45,6 @@ function createQuizFromAjax() {
   			score: 0},
     success: function(resp){ console.log(resp) }
     })
-
 }
 
 function createQuestionFromAjax() {
@@ -51,14 +52,17 @@ function createQuestionFromAjax() {
     method: 'POST',
     url: 'http://localhost:3000/api/v1/question/create',
     data: {
-        username: "TestUser",
-  			category: "all",
-  			quiz_type: "all",
-  			language: "Ruby",
-  			score: 0},
+      quiz_id: 14,
+      question: "array.detect { |x| x > 3 }",
+      array: "[3, 4, 5, 6, 7, 8]",
+      answer: "4",
+      wrong_answer: "3",
+      method: "detect",
+      quiz_type: "True Or False",
+      choices: "[4, 3, 6, null]",
+      correct: false},
     success: function(resp){ console.log(resp) }
     })
-
 }
 
 function generateQuestion() {
@@ -67,6 +71,7 @@ function generateQuestion() {
     { endOfQuiz () }
   else {
     $('#question_number').html(`Question #${question['id']}`)
+    progressBar()
     if (question['quiz_type'] === "True Or False") { quiz_tf() }
     if (question['quiz_type'] === "Multiple Choice") { quiz_mc() }
     $('#next').hide()
@@ -76,8 +81,8 @@ function generateQuestion() {
 function thisIsOurListener() {
   $('#start').on('click', e => {
     e.preventDefault()
-    $('#start').hide()
-    currentQuestion = 0; questionsRight = 0, questionsWrong = 0
+    $('#start').hide(); $('#parent-progress-bar').show()
+    currentQuestion = 0; questionsRight = 0, questionsWrong = 0; whatever = 0
     $('#main_well').show(); $('#question_number').show()
     $('#questions_right').show(); $('#questions_wrong').show()
     $('#questions_right').html(`right: ${questionsRight}`)
@@ -132,7 +137,12 @@ function choice1Listener() {
           $('#choice2').css('background-color', '#0C0') }
       }
     else
-      {if ( `[${eval(question["choices"])[0]}]` === question['answer'].replace(/ /g,"") )
+      // tofix: brackets if number or not
+      // then fix for all other choices
+      // if (typeof eval(question["choices"])[0] === "number" )
+      {if
+        ( `[${eval(question["choices"])[0]}]` === question['answer'].replace(/ /g,"") ||
+          `${eval(question["choices"])[0]}` === question['answer'].replace(/ /g,"") )
         { $('#choice1').css('background-color', '#0C0'); questionsRight++ }
       else
         { $('#choice1').css('background-color', '#C00'); questionsWrong++; check() }}
@@ -153,7 +163,8 @@ function choice2Listener() {
           $('#choice1').css('background-color', '#0C0') }
       }
     else
-      {if ( `[${eval(question["choices"])[1]}]` === question['answer'].replace(/ /g,"") )
+      {if ( `[${eval(question["choices"])[1]}]` === question['answer'].replace(/ /g,"") ||
+            `${eval(question["choices"])[1]}` === question['answer'].replace(/ /g,"") )
         { $('#choice2').css('background-color', '#0C0'); questionsRight++ }
       else
         { $('#choice2').css('background-color', '#C00'); questionsWrong++; check() }}
@@ -165,7 +176,8 @@ function choice2Listener() {
 function choice3Listener() {
   $('#choice3').on('click', e => {
     e.preventDefault()
-    if ( `[${eval(question["choices"])[2]}]` === question['answer'].replace(/ /g,"") )
+    if ( `[${eval(question["choices"])[2]}]` === question['answer'].replace(/ /g,"") ||
+         `${eval(question["choices"])[2]}` === question['answer'].replace(/ /g,""))
       { $('#choice3').css('background-color', '#0C0'); questionsRight++ }
     else
       { $('#choice3').css('background-color', '#C00'); questionsWrong++; check() }
@@ -177,7 +189,8 @@ function choice3Listener() {
 function choice4Listener() {
   $('#choice4').on('click', e => {
     e.preventDefault()
-    if ( `[${eval(question["choices"])[3]}]` === question['answer'].replace(/ /g,"") )
+    if ( `[${eval(question["choices"])[3]}]` === question['answer'].replace(/ /g,"") ||
+         `${eval(question["choices"])[3]}` === question['answer'].replace(/ /g,""))
       { $('#choice4').css('background-color', '#0C0'); questionsRight++ }
     else
       { $('#choice4').css('background-color', '#C00'); questionsWrong++; check() }
@@ -196,7 +209,7 @@ function next() {
 
 function endOfQuiz() {
   $('#timer').hide(); $('#question_number').hide(); $('#next').hide()
-  $('#return_to_main').show()
+  $('#return_to_main').show(); $('#parent-progress-bar').hide()
   $('#main_well').hide()
   $('#questions_right').hide(); $('#questions_wrong').hide()
   $('#choice1').hide(); $('#choice2').hide(); $('#choice3').hide(); $('#choice4').hide()
@@ -257,4 +270,9 @@ function quiz_mc() {
     { $('#choice4').html(`[${eval(question["choices"])[3]}]`) }
   else
     { $('#choice4').html(`${eval(question["choices"])[3]}`) }
+}
+
+function progressBar() {
+  whatever = ((question['id']) * 10)
+  $('#progress-bar')[0]['style']['width'] = `${whatever}%`
 }
