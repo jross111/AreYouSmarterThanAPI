@@ -24,20 +24,21 @@ $(document).ready(function(){
   })
 })
 
-function createQuizFromAjaz() {
-  $.ajax({
-    url: url,
-
-    data: {quiz: {
-            username: "TestUser",
-  			category: "all",
-  			quiz_type: "all",
-  			language: "Ruby",
-  			score: 0}},
-        success: function(resp){ console.log(resp) }
-    });
-
-}
+// function createQuizFromAjax() {
+//   $.ajax({
+//     method: 'POST',
+//     url: 'http://localhost:3000/api/v1/quiz',
+//
+//     data: {quiz: {
+//         username: "TestUser",
+//   			category: "all",
+//   			quiz_type: "all",
+//   			language: "Ruby",
+//   			score: 0}},
+//         success: function(resp){ console.log(resp) }
+//     });
+//
+// }
 
 function generateQuestion() {
   question = questions[currentQuestion]
