@@ -22,7 +22,9 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <p align="center"><button class="btn btn-danger btn-lg" id="start">Start!</button></div>
+          <p align="center">
+            <button class="btn btn-danger btn-lg" id="start">Start a New Quiz!</button>
+        </div>
 
             <div class"form-inline" align="center">
               <a style="float:left; padding: 10px; color:lime" id="questions_right"></a>
@@ -30,22 +32,27 @@
               <a style="float:right; padding:10px; color:red" id="questions_wrong"></a>
             </div>
 
-        <!-- <div class="col-lg-2" align="center">
-          <a class="btn btn-primary btn-lg">JavaScript</a></div>
-
-        <div class="col-lg-2">
-          <a class="btn btn-success btn-lg">Leaderboard</a></p></div> -->
         </div>
       </div>
 
-      <!-- Quiz Starts -->
+      <!-- Final Score -->
+      <div class="panel panel-danger" id="final_score" align="center">
+        <div class="panel-heading"><h2 class="panel-title">Final Score</h2></div>
+        <h3 class="panel-body" id="final_right" style="color:lime"></h3>
+        <h3 class="panel-body" id="final_wrong" style="color:red"></h3>
+        <h2a class="panel-body" id="final_points"></h2a><br>
+        <button class="btn btn-danger btn-lg" id="return_to_main">Return to Main Screen</button>
+        <br><br><br>
+      </div>
 
-      <!-- //question collector class -->
+
+
+      <!-- Quiz -->
 
       <div id="master">
       <div class="container" id="quiz">
         <div class="row" align="center">
-          <div class="col-lg-5 well" id="main_well">
+          <div class="col-lg-6 well" id="main_well">
             <h4 align="center" id="type_of_question">MC/TF/Enter here</h4>
             <h3 align="center" id="array">Array will be shown here</h3>
             <h3 align="center" id="ask_question">Question will be asked here</h3>
@@ -67,34 +74,38 @@
           </div>
         </div>
 
-        <div class="choices_and_next">
+        <div class="choices_and_next" align="center">
+          <div class="btn-group">
           <div class="row">
-            <div class="col-lg-12" align="center">
-              <button type="button" class="btn btn-warning" align="center" id="choice1">First Answer</button>
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-warning btn-block" id="choice1">First Answer</button>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12" align="center">
-              <button type="button" class="btn btn-warning" align="center" id="choice2">Second Answer</button>
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-warning btn-block" id="choice2">Second Answer</button>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12" align="center">
-              <button type="button" class="btn btn-warning" align="center" id="choice3">Third Answer</button>
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-warning btn-block" id="choice3">Third Answer</button>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12" align="center">
-              <button type="button" class="btn btn-warning" align="center" id="choice4">Fourth Answer</button>
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-warning btn-block" id="choice4">Fourth Answer</button>
+              </div>
             </div>
-          </div>
-          <h1></h1>
-          <div class="row">
-            <div class="col-lg-12" align="center">
-              <button type="button" class="btn btn-warning" align="center" id="next">Next Question</button>
+            <h1></h1>
+            <div class="row">
+              <div class="col-lg-12">
+                <button type="button" class="btn btn-warning btn-block" id="next">Next Question</button>
+              </div>
             </div>
           </div>
         </div>
+        <br>
+        <br>
 
       </div>
       </div>

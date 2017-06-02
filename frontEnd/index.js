@@ -1,12 +1,19 @@
+// put in timer
+// start timer when thisIsOurListener
+// endOfQuiz currently triggers if there's not a question (under generateQuestion)
+// trigger endOfQuiz when timer reaches 0
+
 var question = null, questions = null
 var currentQuestion = 0
 var questionsRight = 0, questionsWrong = 0
 
 $(document).ready(function(){
   console.log('Document ready!')
+  $('#return_to_main').hide()
   $('#timer').hide(); $('#question_number').hide(); $('#next').hide()
   $('#type_of_question').hide(); $('#array').hide(); $('#ask_question').hide(); $('#array_output').hide()
   $('#main_well').hide()
+  $('#final_score').hide()
   $('#questions_right').hide(); $('#questions_wrong').hide()
   $('#choice1').hide(); $('#choice2').hide(); $('#choice3').hide(); $('#choice4').hide()
 
@@ -19,39 +26,58 @@ $(document).ready(function(){
       questions = response
       thisIsOurListener()
       choice1Listener(); choice2Listener(); choice3Listener(); choice4Listener()
-      next()
+      next(); return_to_main();
       }
   })
 })
 
-// function createQuizFromAjax() {
-//   $.ajax({
-//     method: 'POST',
-//     url: 'http://localhost:3000/api/v1/quiz',
-//
-//     data: {quiz: {
-//         username: "TestUser",
-//   			category: "all",
-//   			quiz_type: "all",
-//   			language: "Ruby",
-//   			score: 0}},
-//         success: function(resp){ console.log(resp) }
-//     });
-//
-// }
+function createQuizFromAjax() {
+  $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/api/v1/quiz/create',
+    data: {
+        username: "TestUser",
+  			category: "all",
+  			quiz_type: "all",
+  			language: "Ruby",
+  			score: 0},
+    success: function(resp){ console.log(resp) }
+    })
+
+}
+
+function createQuestionFromAjax() {
+  $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/api/v1/question/create',
+    data: {
+        username: "TestUser",
+  			category: "all",
+  			quiz_type: "all",
+  			language: "Ruby",
+  			score: 0},
+    success: function(resp){ console.log(resp) }
+    })
+
+}
 
 function generateQuestion() {
   question = questions[currentQuestion]
-  $('#question_number').html(`Question #${question['id']}`)
-  if (question['quiz_type'] === "True Or False") { quiz_tf() }
-  if (question['quiz_type'] === "Multiple Choice") { quiz_mc() }
-  $('#next').hide()
+  if (typeof question === "undefined")
+    { endOfQuiz () }
+  else {
+    $('#question_number').html(`Question #${question['id']}`)
+    if (question['quiz_type'] === "True Or False") { quiz_tf() }
+    if (question['quiz_type'] === "Multiple Choice") { quiz_mc() }
+    $('#next').hide()
+  }
 }
 
 function thisIsOurListener() {
   $('#start').on('click', e => {
     e.preventDefault()
     $('#start').hide()
+    currentQuestion = 0; questionsRight = 0, questionsWrong = 0
     $('#main_well').show(); $('#question_number').show()
     $('#questions_right').show(); $('#questions_wrong').show()
     $('#questions_right').html(`right: ${questionsRight}`)
@@ -165,6 +191,28 @@ function next() {
     e.preventDefault()
     startListening(); resetColors()
     currentQuestion++; generateQuestion()
+  })
+}
+
+function endOfQuiz() {
+  $('#timer').hide(); $('#question_number').hide(); $('#next').hide()
+  $('#return_to_main').show()
+  $('#main_well').hide()
+  $('#questions_right').hide(); $('#questions_wrong').hide()
+  $('#choice1').hide(); $('#choice2').hide(); $('#choice3').hide(); $('#choice4').hide()
+  $('#final_score').show()
+  $('#final_right').html("Questions Right: " + questionsRight)
+  $('#final_wrong').html("Questions Wrong: " + questionsWrong)
+  $('#final_points').html("Total Points: " + (questionsRight - questionsWrong) )
+  }
+
+function return_to_main() {
+  $('#return_to_main').on('click', e=> {
+    e.preventDefault()
+    $('#final_score').hide()
+    $('#questions_right').hide(); $('#questions_wrong').hide()
+    $('#return_to_main').hide()
+    $('#start').show()
   })
 }
 
