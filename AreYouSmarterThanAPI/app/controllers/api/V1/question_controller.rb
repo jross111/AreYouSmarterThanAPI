@@ -5,13 +5,16 @@ class Api::V1::QuestionController < ApplicationController
     render json: @questions
   end
 
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      render json: @question
+    end
+  end
+
   def show
     @question = Question.find_by(id: params[:id])
     render json: @question
-  end
-
-  def create
-    @question = Question.create(question_params)
   end
 
   private

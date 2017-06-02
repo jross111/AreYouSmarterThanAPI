@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
 
       post '/quiz/create', to: 'quiz#create'
+      post '/question/create', to: 'question#create'
 
       resources :welcome
       resources :quiz
