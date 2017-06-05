@@ -2,7 +2,7 @@
 
 This program is a **dynamically generated question generator** aimed at helping those wishing to master the basics of different coding languages.
 
-While normal quizzes load in a set number of questions and answers manually, this application can create **one of a current 200,000 possible questions** each time, so no two quizzes are ever alike!
+While normal quizzes load in a set number of questions and answers manually, this application can create **one of a current 300,000 possible questions** each time, so no two quizzes are ever alike!
 
 #### Questions
 
@@ -33,15 +33,16 @@ Try it out and get to learning!
 * Different languages
   * Currently: Ruby only
   * Next step: JS, then others
-* Adding "enter the right answer" to the mix
 * Leaderboards
 * Can choose type of quiz to take
   * Based on language
   * Based on method
   * TF/MC/enter/Mix rather than a mix of all right now (each increases in difficulty)
+* Results show how many of each type of question you were given (method, type)
 * Hint button / tutorial version
 * Improve visuals / animations
-* Clean up back end code
+* Fix DOM issue
+* Clean up back end code more
 * Hosting on Heroku
 
 Made with ♥ in the Flatiron School by
