@@ -37,7 +37,7 @@ Question.create({
   answer: "6",
   wrong_answer: "7",
   method: "find",
-  quiz_type: "Multiple Choice",
+  quiz_type: "Enter",
   choices: "[6, 4, 5, 8]",
   correct: false
 })
@@ -49,7 +49,7 @@ Question.create({
   answer: "9",
   wrong_answer: "4",
   method: "pop",
-  quiz_type: "True Or False",
+  quiz_type: "Enter",
   choices: "[[5, 6, 7, 8, 9], 4, [4, 5, 6, 7, 8], 9]",
   correct: false
 })
